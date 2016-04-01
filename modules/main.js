@@ -1,15 +1,19 @@
-//var App = require('./App');
-//var Home = require('./Home');
+var App = require('./App');
+var Home = require('./Home');
 var About = require('./About');
-import React from 'react'
-import { render, findDOMNode } from 'react-dom'
-import { createHistory, useBasename } from 'history'
-import { Router, History, Route, IndexRoute, Link, hashHistory } from 'react-router'
+var Login = require('./login');
 
+
+import React from 'react'
+import { render } from 'react-dom'
+import { Router, Route, Link } from 'react-router'
 
 render((
-  <Router history={hashHistory}>
-    <Route path="/" component={About}>
+  <Router>
+    <Route path="/" component={Login} />
+    <Route path="/main" component={App}>
+      <Route path="/main/home" component={Home} />
+      <Route path="/main/about" component={About} />
     </Route>
   </Router>
-), document.getElementById('app'))
+), document.body)
